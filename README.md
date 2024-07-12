@@ -18,4 +18,4 @@ sh ./run.sh
 
 ## Visualise
 
-Drag and drop the output files `arcs.trace.yaml` and `customers.trace.yaml` into Posthoc.
+Drag and drop the output files `arcs.trace.yaml` and `customers.trace.yaml` into [Posthoc](https://posthoc.pathfinding.ai).
