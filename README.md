@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/06c457bb-d619-4337-b3fb-e214acc807fb)
+![image](https://github.com/user-attachments/assets/e9e8ba43-5765-4e72-8011-6d5c03ee2ac7)
 
 # Truck-Drone Routing Problem Search Trace Generator
 
