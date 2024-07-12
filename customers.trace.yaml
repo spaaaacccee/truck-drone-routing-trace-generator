@@ -1,0 +1,109 @@
+version: 1.4.0
+views:
+  main:
+    - $: circle
+      x: ${{ $.customers[$.i].x }}
+      y: ${{ $.customers[$.i].y }}
+      radius: 1
+      alpha: 0.25
+      fill: ${{ theme.foreground }}
+      $for:
+        $to: ${{ $.customers.length }}
+      label: N:${{ $.i }}
+      label-color: ${{ theme.foreground }}
+      label-size: 0.5
+      label-x: 0.25
+      label-y: 1.5
+      $info:
+        customer: ${{ $.i }}
+events:
+  - type: customer-list
+    customers:
+      - type: customer
+        id: 0
+        x: 40
+        y: 50
+        demand: 0
+        readyTime: 0
+        dueDate: 240
+        serviceTime: 0
+      - type: customer
+        id: 1
+        x: 25
+        y: 85
+        demand: 20
+        readyTime: 145
+        dueDate: 175
+        serviceTime: 10
+      - type: customer
+        id: 2
+        x: 22
+        y: 75
+        demand: 30
+        readyTime: 50
+        dueDate: 80
+        serviceTime: 10
+      - type: customer
+        id: 3
+        x: 22
+        y: 85
+        demand: 10
+        readyTime: 109
+        dueDate: 139
+        serviceTime: 10
+      - type: customer
+        id: 4
+        x: 20
+        y: 80
+        demand: 40
+        readyTime: 141
+        dueDate: 171
+        serviceTime: 10
+      - type: customer
+        id: 5
+        x: 20
+        y: 85
+        demand: 20
+        readyTime: 41
+        dueDate: 71
+        serviceTime: 10
+      - type: customer
+        id: 6
+        x: 18
+        y: 75
+        demand: 20
+        readyTime: 95
+        dueDate: 125
+        serviceTime: 10
+      - type: customer
+        id: 7
+        x: 15
+        y: 75
+        demand: 20
+        readyTime: 79
+        dueDate: 109
+        serviceTime: 10
+      - type: customer
+        id: 8
+        x: 15
+        y: 80
+        demand: 10
+        readyTime: 91
+        dueDate: 121
+        serviceTime: 10
+      - type: customer
+        id: 9
+        x: 10
+        y: 35
+        demand: 20
+        readyTime: 91
+        dueDate: 121
+        serviceTime: 10
+      - type: customer
+        id: 10
+        x: 10
+        y: 40
+        demand: 30
+        readyTime: 119
+        dueDate: 149
+        serviceTime: 10

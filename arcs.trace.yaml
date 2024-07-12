@@ -1,0 +1,675 @@
+version: 1.4.0
+views:
+  arc:
+    - $: circle
+      x: ${{ $.arc.x }}
+      y: ${{ $.arc.y }}
+      radius: 0.5
+      fill: ${{ $.color }}
+      clear: true
+      label: V:${{ $.arc.vehicle }}
+      label-color: ${{ theme.foreground }}
+      label-size: 0.5
+      label-x: 0.25
+      label-y: 1
+      $info: ${{ $.arc }}
+    - $: path
+      points:
+        - ${{ $.arc.start }}
+        - ${{ $.arc.end }}
+      fill: ${{ $.color }}
+      clear: true
+      alpha: 0.5
+  main:
+    - $: arc
+      arc: ${{ $.arcs[$.i] }}
+      color: >-
+        ${{ ({ outward: color.yellow, return: color.red })[$.arcs[$.i].trip] ??
+        color.green }}
+      $for:
+        $to: ${{ $.arcs.length }}
+events:
+  - id: 0
+    type: timestep
+    arcs:
+      - start:
+          x: 40
+          y: 50
+          time: 0
+        end:
+          x: 22
+          y: 75
+          time: 2
+        type: truck
+        vehicle: 1
+        progress: 0
+        x: 40
+        y: 50
+        time: 0
+  - id: 1
+    type: timestep
+    arcs:
+      - start:
+          x: 40
+          y: 50
+          time: 0
+        end:
+          x: 22
+          y: 75
+          time: 2
+        type: truck
+        vehicle: 1
+        progress: 0.5
+        x: 31
+        y: 62.5
+        time: 1
+  - id: 2
+    type: timestep
+    arcs:
+      - start:
+          x: 40
+          y: 50
+          time: 2
+        end:
+          x: 15
+          y: 75
+          time: 4
+        type: truck
+        vehicle: 0
+        progress: 0
+        x: 40
+        y: 50
+        time: 2
+      - start:
+          x: 40
+          y: 50
+          time: 0
+        end:
+          x: 22
+          y: 75
+          time: 2
+        type: truck
+        vehicle: 1
+        progress: 1
+        x: 22
+        y: 75
+        time: 2
+      - start:
+          x: 22
+          y: 75
+          time: 2
+        end:
+          x: 20
+          y: 85
+          time: 4
+        type: truck
+        vehicle: 1
+        progress: 0
+        x: 22
+        y: 75
+        time: 2
+  - id: 3
+    type: timestep
+    arcs:
+      - start:
+          x: 40
+          y: 50
+          time: 2
+        end:
+          x: 15
+          y: 75
+          time: 4
+        type: truck
+        vehicle: 0
+        progress: 0.5
+        x: 27.5
+        y: 62.5
+        time: 3
+      - start:
+          x: 22
+          y: 75
+          time: 2
+        end:
+          x: 20
+          y: 85
+          time: 4
+        type: truck
+        vehicle: 1
+        progress: 0.5
+        x: 21
+        y: 80
+        time: 3
+      - start:
+          x: 40
+          y: 50
+          time: 3
+        end:
+          x: 10
+          y: 35
+          time: 5
+        type: truck
+        vehicle: 2
+        progress: 0
+        x: 40
+        y: 50
+        time: 3
+  - id: 4
+    type: timestep
+    arcs:
+      - start:
+          x: 40
+          y: 50
+          time: 2
+        end:
+          x: 15
+          y: 75
+          time: 4
+        type: truck
+        vehicle: 0
+        progress: 1
+        x: 15
+        y: 75
+        time: 4
+      - start:
+          x: 15
+          y: 75
+          time: 4
+        end:
+          x: 18
+          y: 75
+          time: 6
+        type: truck
+        vehicle: 0
+        progress: 0
+        x: 15
+        y: 75
+        time: 4
+      - start:
+          x: 22
+          y: 75
+          time: 2
+        end:
+          x: 20
+          y: 85
+          time: 4
+        type: truck
+        vehicle: 1
+        progress: 1
+        x: 20
+        y: 85
+        time: 4
+      - start:
+          x: 20
+          y: 85
+          time: 4
+        end:
+          x: 15
+          y: 80
+          time: 6
+        type: truck
+        vehicle: 1
+        progress: 0
+        x: 20
+        y: 85
+        time: 4
+      - start:
+          x: 20
+          y: 85
+          time: 4
+        end:
+          x: 25
+          y: 85
+          time: 9
+        type: drone
+        vehicle: d
+        progress: 0
+        trip: outward
+        x: 20
+        y: 85
+        time: 4
+      - start:
+          x: 40
+          y: 50
+          time: 3
+        end:
+          x: 10
+          y: 35
+          time: 5
+        type: truck
+        vehicle: 2
+        progress: 0.5
+        x: 25
+        y: 42.5
+        time: 4
+  - id: 5
+    type: timestep
+    arcs:
+      - start:
+          x: 15
+          y: 75
+          time: 4
+        end:
+          x: 18
+          y: 75
+          time: 6
+        type: truck
+        vehicle: 0
+        progress: 0.5
+        x: 16.5
+        y: 75
+        time: 5
+      - start:
+          x: 20
+          y: 85
+          time: 4
+        end:
+          x: 15
+          y: 80
+          time: 6
+        type: truck
+        vehicle: 1
+        progress: 0.5
+        x: 17.5
+        y: 82.5
+        time: 5
+      - start:
+          x: 20
+          y: 85
+          time: 4
+        end:
+          x: 25
+          y: 85
+          time: 9
+        type: drone
+        vehicle: d
+        progress: 0.2
+        trip: outward
+        x: 21
+        y: 85
+        time: 5
+      - start:
+          x: 40
+          y: 50
+          time: 3
+        end:
+          x: 10
+          y: 35
+          time: 5
+        type: truck
+        vehicle: 2
+        progress: 1
+        x: 10
+        y: 35
+        time: 5
+      - start:
+          x: 10
+          y: 35
+          time: 5
+        end:
+          x: 10
+          y: 40
+          time: 7
+        type: truck
+        vehicle: 2
+        progress: 0
+        x: 10
+        y: 35
+        time: 5
+  - id: 6
+    type: timestep
+    arcs:
+      - start:
+          x: 18
+          y: 75
+          time: 6
+        end:
+          x: 20
+          y: 80
+          time: 8
+        type: truck
+        vehicle: 0
+        progress: 0
+        x: 18
+        y: 75
+        time: 6
+      - start:
+          x: 15
+          y: 75
+          time: 4
+        end:
+          x: 18
+          y: 75
+          time: 6
+        type: truck
+        vehicle: 0
+        progress: 1
+        x: 18
+        y: 75
+        time: 6
+      - start:
+          x: 20
+          y: 85
+          time: 4
+        end:
+          x: 15
+          y: 80
+          time: 6
+        type: truck
+        vehicle: 1
+        progress: 1
+        x: 15
+        y: 80
+        time: 6
+      - start:
+          x: 15
+          y: 80
+          time: 6
+        end:
+          x: 25
+          y: 85
+          time: 9
+        type: truck
+        vehicle: 1
+        progress: 0
+        x: 15
+        y: 80
+        time: 6
+      - start:
+          x: 20
+          y: 85
+          time: 4
+        end:
+          x: 25
+          y: 85
+          time: 9
+        type: drone
+        vehicle: d
+        progress: 0.4
+        trip: outward
+        x: 22
+        y: 85
+        time: 6
+      - start:
+          x: 10
+          y: 35
+          time: 5
+        end:
+          x: 10
+          y: 40
+          time: 7
+        type: truck
+        vehicle: 2
+        progress: 0.5
+        x: 10
+        y: 37.5
+        time: 6
+  - id: 7
+    type: timestep
+    arcs:
+      - start:
+          x: 18
+          y: 75
+          time: 6
+        end:
+          x: 20
+          y: 80
+          time: 8
+        type: truck
+        vehicle: 0
+        progress: 0.5
+        x: 19
+        y: 77.5
+        time: 7
+      - start:
+          x: 15
+          y: 80
+          time: 6
+        end:
+          x: 25
+          y: 85
+          time: 9
+        type: truck
+        vehicle: 1
+        progress: 0.3333333333333333
+        x: 18.333333333333336
+        y: 81.66666666666667
+        time: 7
+      - start:
+          x: 20
+          y: 85
+          time: 4
+        end:
+          x: 25
+          y: 85
+          time: 9
+        type: drone
+        vehicle: d
+        progress: 0.6
+        trip: return
+        x: 23
+        y: 85
+        time: 7
+      - start:
+          x: 10
+          y: 35
+          time: 5
+        end:
+          x: 10
+          y: 40
+          time: 7
+        type: truck
+        vehicle: 2
+        progress: 1
+        x: 10
+        y: 40
+        time: 7
+      - start:
+          x: 10
+          y: 40
+          time: 7
+        end:
+          x: 40
+          y: 50
+          time: 9
+        type: truck
+        vehicle: 2
+        progress: 0
+        x: 10
+        y: 40
+        time: 7
+  - id: 8
+    type: timestep
+    arcs:
+      - start:
+          x: 20
+          y: 80
+          time: 8
+        end:
+          x: 40
+          y: 50
+          time: 10
+        type: truck
+        vehicle: 0
+        progress: 0
+        x: 20
+        y: 80
+        time: 8
+      - start:
+          x: 18
+          y: 75
+          time: 6
+        end:
+          x: 20
+          y: 80
+          time: 8
+        type: truck
+        vehicle: 0
+        progress: 1
+        x: 20
+        y: 80
+        time: 8
+      - start:
+          x: 15
+          y: 80
+          time: 6
+        end:
+          x: 25
+          y: 85
+          time: 9
+        type: truck
+        vehicle: 1
+        progress: 0.6666666666666666
+        x: 21.666666666666664
+        y: 83.33333333333334
+        time: 8
+      - start:
+          x: 20
+          y: 85
+          time: 4
+        end:
+          x: 25
+          y: 85
+          time: 9
+        type: drone
+        vehicle: d
+        progress: 0.8
+        trip: return
+        x: 24
+        y: 85
+        time: 8
+      - start:
+          x: 10
+          y: 40
+          time: 7
+        end:
+          x: 40
+          y: 50
+          time: 9
+        type: truck
+        vehicle: 2
+        progress: 0.5
+        x: 25
+        y: 45
+        time: 8
+  - id: 9
+    type: timestep
+    arcs:
+      - start:
+          x: 20
+          y: 80
+          time: 8
+        end:
+          x: 40
+          y: 50
+          time: 10
+        type: truck
+        vehicle: 0
+        progress: 0.5
+        x: 30
+        y: 65
+        time: 9
+      - start:
+          x: 25
+          y: 85
+          time: 9
+        end:
+          x: 40
+          y: 50
+          time: 11
+        type: truck
+        vehicle: 1
+        progress: 0
+        x: 25
+        y: 85
+        time: 9
+      - start:
+          x: 15
+          y: 80
+          time: 6
+        end:
+          x: 25
+          y: 85
+          time: 9
+        type: truck
+        vehicle: 1
+        progress: 1
+        x: 25
+        y: 85
+        time: 9
+      - start:
+          x: 20
+          y: 85
+          time: 4
+        end:
+          x: 25
+          y: 85
+          time: 9
+        type: drone
+        vehicle: d
+        progress: 1
+        trip: return
+        x: 25
+        y: 85
+        time: 9
+      - start:
+          x: 10
+          y: 40
+          time: 7
+        end:
+          x: 40
+          y: 50
+          time: 9
+        type: truck
+        vehicle: 2
+        progress: 1
+        x: 40
+        y: 50
+        time: 9
+  - id: 10
+    type: timestep
+    arcs:
+      - start:
+          x: 20
+          y: 80
+          time: 8
+        end:
+          x: 40
+          y: 50
+          time: 10
+        type: truck
+        vehicle: 0
+        progress: 1
+        x: 40
+        y: 50
+        time: 10
+      - start:
+          x: 25
+          y: 85
+          time: 9
+        end:
+          x: 40
+          y: 50
+          time: 11
+        type: truck
+        vehicle: 1
+        progress: 0.5
+        x: 32.5
+        y: 67.5
+        time: 10
+  - id: 11
+    type: timestep
+    arcs:
+      - start:
+          x: 25
+          y: 85
+          time: 9
+        end:
+          x: 40
+          y: 50
+          time: 11
+        type: truck
+        vehicle: 1
+        progress: 1
+        x: 40
+        y: 50
+        time: 11
